@@ -1,0 +1,76 @@
+.hero{
+    min-height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    background:
+        linear-gradient(rgba(255,255,255,0.75),
+        rgba(255,255,255,0.75)),
+        url("../assets/panchayat.jpg");
+
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    text-align:center;
+    padding:0 20px;
+}
+.hero-content{
+    max-width:800px;
+}
+
+.hero-tag{
+    color:#2E7D32;
+    font-weight:600;
+    letter-spacing:1px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:3.2rem;
+    color:#1F2937;
+    line-height:1.2;
+    margin-bottom:20px;
+}
+
+.hero-description{
+    font-size:1.1rem;
+    color:black;
+    line-height:1.8;
+    margin-bottom:35px;
+}
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+}
+
+.primary-btn,
+.secondary-btn{
+    padding:14px 28px;
+    border-radius:10px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+}
+
+.primary-btn{
+    background:#2E7D32;
+    color:white;
+}
+
+.primary-btn:hover{
+    background:#256728;
+}
+
+.secondary-btn{
+    border:1px solid #2E7D32;
+    color:#2E7D32;
+}
+
+.secondary-btn:hover{
+    background:#2E7D32;
+    color:white;
+}
