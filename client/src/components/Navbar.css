@@ -1,0 +1,89 @@
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    font-family: "Poppins", sans-serif;
+}
+
+.navbar{
+    height:75px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 70px;
+    background:#ffffff;
+    border-bottom:1px solid #e5e7eb;
+    box-shadow:0 2px 12px rgba(0,0,0,0.05);
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.logo h2{
+    color:#1F2937;
+    font-size:32px;
+    font-weight:700;
+    letter-spacing:0.5px;
+}
+
+.logo span{
+    color:#2E7D32;
+}
+
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:50px;
+}
+
+.nav-links a{
+    display:inline-flex;
+    align-items:center;
+    position: relative;
+    text-decoration:none;
+    color:#374151;
+    font-size:15px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#2E7D32;
+}
+
+.nav-links a::after{
+    content:"";
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#2E7D32;
+    left:0;
+    bottom:-5px;
+    transition:0.3s;
+}
+
+.nav-links a:hover::after{
+    width:100%;
+}
+
+.login-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:11px 24px;
+    border:1px solid #2E7D32;
+    border-radius:10px;
+    color:#2E7D32 !important;
+    font-weight:600;
+}
+
+.login-btn:hover{
+    background:#2E7D32;
+    color:white !important;
+}

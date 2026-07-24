@@ -6,9 +6,12 @@ import ViewGrievances from "./pages/ViewGrievances";
 import AdminLogin from "./pages/AdminLogin";
 import GrievanceDetails from "./pages/GrievanceDetails";
 import NotFound from "./pages/NotFound";
+import Navbar from "./components/Navbar";
 
 function App() {
   return (
+    <>
+    <Navbar />
     <Routes>
 
       <Route path="/" element={<Home />} />
@@ -24,6 +27,7 @@ function App() {
       <Route path="*" element={<NotFound />} />
 
     </Routes>
+    </>
   );
 }
 
