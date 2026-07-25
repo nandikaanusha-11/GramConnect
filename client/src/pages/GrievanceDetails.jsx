@@ -1,21 +1,39 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
+import axios from "axios";
 import "./GrievanceDetails.css";
 
 function GrievanceDetails() {
 
-    // Dummy grievance data (will come from backend later)
-    const grievance = {
-            complainant:"Anusha",
-            ward:"ward 5",
-            id: 101,
-            category:"electricity",
-            department:"Electrical department",
-            description: "Street light not working",
-            dateRaised:"26.9.26",
-            location: "Main Road",
-            status: "Pending"
-    };
+    const { id } = useParams();
+
+    const [grievance, setGrievance] = useState(null);
+
+    useEffect(() => {
+
+        async function fetchGrievance() {
+
+            try {
+
+                const response = await axios.get(
+                    `http://localhost:5000/grievances/${id}`
+                );
+
+                setGrievance(response.data);
+
+            } catch (err) {
+                console.log(err);
+            }
+
+        }
+
+        fetchGrievance();
+
+    }, [id]);
+
+    if (!grievance) {
+        return <h2>Loading...</h2>;
+    }
 
     return (
 
@@ -41,12 +59,12 @@ function GrievanceDetails() {
                 </div>
 
                 <div className="detail">
-                    <strong>Description:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong>Description:</strong>
                     <span>{grievance.description}</span>
                 </div>
 
                 <div className="detail">
-                    <strong>Ward No:</strong>
+                    <strong>Ward:</strong>
                     <span>{grievance.ward}</span>
                 </div>
 
@@ -57,13 +75,13 @@ function GrievanceDetails() {
 
                 <div className="detail">
                     <strong>Date Raised:</strong>
-                    <span>{grievance.dateRaised}</span>
+                    <span>{grievance.date_raised}</span>
                 </div>
 
                 <div className="detail">
                     <strong>Status:</strong>
 
-                    <span className={`status ${grievance.status.toLowerCase()}`}>
+                    <span className={`status ${grievance.status.toLowerCase().replace(" ", "-")}`}>
                         {grievance.status}
                     </span>
 

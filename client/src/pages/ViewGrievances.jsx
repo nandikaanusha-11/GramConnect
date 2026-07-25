@@ -2,8 +2,10 @@ import React from "react";
 import "./ViewGrievances.css";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 function ViewGrievances() {
-   
+   const navigate = useNavigate();
+
    const [grievances, setGrievances] = useState([]);
    
 
@@ -32,8 +34,8 @@ setGrievances(response.data);
 
                 {grievances.map((grievance) => (
 
-                    <div className="grievance-card" key={grievance.grievance_id}>
-
+                    <div className="grievance-card" key={grievance.grievance_id}
+                         onClick={() => navigate(`/grievance/${grievance.grievance_id}`)}>
                         <div className="card-header">
                             <h3>{grievance.complainant}</h3>
 
