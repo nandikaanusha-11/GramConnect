@@ -2,27 +2,46 @@ import React from "react";
 import "./ViewGrievances.css";
 
 function ViewGrievances() {
+    // title: "",
+    // ward: "",
+    // category: "",
+    // department: "",
+    // description: "",
+    // dateRaised: "",
+    // location:"",
+    // status: "Pending"
 
     // Temporary dummy data (will come from MongoDB later)
     const grievances = [
         {
+            complainant:"Anusha",
+            ward:5,
             id: 101,
-            title: "Street light not working",
-            category: "Electricity",
+            category:"electricity",
+            department:"Electrical department",
+            description: "Street light not working",
+            dateRaised:"26.9.26",
             location: "Main Road",
             status: "Pending"
         },
         {
+            complainant:"Hirthika",
+            ward:5,
             id: 102,
-            title: "Garbage collection issue",
             category: "Sanitation",
+            department:"Health",
+            description: "Very unclean",
+            dateRaised:"18.3.26",
             location: "Market Area",
             status: "Resolved"
         },
         {
+            complainant:"Sasikala",
+            ward:5,
             id: 103,
-            title: "Road damage complaint",
             category: "Infrastructure",
+            description: "Road damage complaint",
+            dateRaised:"1.2.26",
             location: "Village Road",
             status: "In Progress"
         }
@@ -46,7 +65,7 @@ function ViewGrievances() {
                     <div className="grievance-card" key={grievance.id}>
 
                         <div className="card-header">
-                            <h3>{grievance.title}</h3>
+                            <h3>{grievance.complainant}</h3>
 
                             <span className={`status ${grievance.status.toLowerCase().replace(" ","-")}`}>
                                 {grievance.status}

@@ -10,6 +10,7 @@ function RegisterGrievances() {
     department: "",
     description: "",
     dateRaised: "",
+    location:"",
     status: "Pending"
   });
 
@@ -114,6 +115,17 @@ function RegisterGrievances() {
             type="date"
             name="dateRaised"
             value={formData.dateRaised}
+            onChange={handleChange}
+            required
+          />
+
+           <label>Location</label>
+
+          <textarea
+            name="location"
+            rows="5"
+            placeholder="Enter the location:"
+            value={formData.location}
             onChange={handleChange}
             required
           />

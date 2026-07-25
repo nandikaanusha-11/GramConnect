@@ -6,15 +6,15 @@ function GrievanceDetails() {
 
     // Dummy grievance data (will come from backend later)
     const grievance = {
-        id: 101,
-        title: "Street Light Not Working",
-        category: "Electricity",
-        description:
-            "The street light near the bus stop has not been working for the past five days, making the area unsafe during the night.",
-        location: "Main Road",
-        reportedBy: "Anusha",
-        date: "24 July 2026",
-        status: "Pending"
+            complainant:"Anusha",
+            ward:5,
+            id: 101,
+            category:"electricity",
+            department:"Electrical department",
+            description: "Street light not working",
+            dateRaised:"26.9.26",
+            location: "Main Road",
+            status: "Pending"
     };
 
     return (
@@ -26,8 +26,13 @@ function GrievanceDetails() {
                 <h1>Grievance Details</h1>
 
                 <div className="detail">
-                    <strong>Title:</strong>
-                    <span>{grievance.title}</span>
+                    <strong>Complainant:</strong>
+                    <span>{grievance.complainant}</span>
+                </div>
+
+                <div className="detail">
+                    <strong>Department:</strong>
+                    <span>{grievance.department}</span>
                 </div>
 
                 <div className="detail">
@@ -41,18 +46,18 @@ function GrievanceDetails() {
                 </div>
 
                 <div className="detail">
+                    <strong>Ward No:</strong>
+                    <span>{grievance.ward}</span>
+                </div>
+
+                <div className="detail">
                     <strong>Location:</strong>
                     <span>{grievance.location}</span>
                 </div>
 
                 <div className="detail">
-                    <strong>Reported By:</strong>
-                    <span>{grievance.reportedBy}</span>
-                </div>
-
-                <div className="detail">
-                    <strong>Date:</strong>
-                    <span>{grievance.date}</span>
+                    <strong>Date Raised:</strong>
+                    <span>{grievance.dateRaised}</span>
                 </div>
 
                 <div className="detail">
