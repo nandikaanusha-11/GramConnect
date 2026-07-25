@@ -1,52 +1,22 @@
 import React from "react";
 import "./ViewGrievances.css";
-
+import { useState, useEffect } from "react";
+import axios from "axios";
 function ViewGrievances() {
-    // title: "",
-    // ward: "",
-    // category: "",
-    // department: "",
-    // description: "",
-    // dateRaised: "",
-    // location:"",
-    // status: "Pending"
+   
+   const [grievances, setGrievances] = useState([]);
+   
 
-    // Temporary dummy data (will come from MongoDB later)
-    const grievances = [
-        {
-            complainant:"Anusha",
-            ward:5,
-            id: 101,
-            category:"electricity",
-            department:"Electrical department",
-            description: "Street light not working",
-            dateRaised:"26.9.26",
-            location: "Main Road",
-            status: "Pending"
-        },
-        {
-            complainant:"Hirthika",
-            ward:5,
-            id: 102,
-            category: "Sanitation",
-            department:"Health",
-            description: "Very unclean",
-            dateRaised:"18.3.26",
-            location: "Market Area",
-            status: "Resolved"
-        },
-        {
-            complainant:"Sasikala",
-            ward:5,
-            id: 103,
-            category: "Infrastructure",
-            description: "Road damage complaint",
-            dateRaised:"1.2.26",
-            location: "Village Road",
-            status: "In Progress"
-        }
-    ];
+    useEffect(() => {
+    async function fetchGrievances(){
+        const response = await axios.get(
+    "http://localhost:5000/grievances"
+);
+setGrievances(response.data);
+    }
 
+    fetchGrievances();
+}, []);
 
     return (
         <div className="grievance-container">
@@ -62,7 +32,7 @@ function ViewGrievances() {
 
                 {grievances.map((grievance) => (
 
-                    <div className="grievance-card" key={grievance.id}>
+                    <div className="grievance-card" key={grievance.grievance_id}>
 
                         <div className="card-header">
                             <h3>{grievance.complainant}</h3>
@@ -82,7 +52,7 @@ function ViewGrievances() {
                         </p>
 
                         <p>
-                            <strong>Grievance ID:</strong> #{grievance.id}
+                            <strong>Grievance ID:</strong> #{grievance.grievance_id}
                         </p>
 
                     </div>

@@ -7,7 +7,7 @@ function GrievanceDetails() {
     // Dummy grievance data (will come from backend later)
     const grievance = {
             complainant:"Anusha",
-            ward:5,
+            ward:"ward 5",
             id: 101,
             category:"electricity",
             department:"Electrical department",

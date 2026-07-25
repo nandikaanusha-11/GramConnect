@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./RegisterGrievances.css";
+import axios from "axios";
 
 function RegisterGrievances() {
 
@@ -10,8 +11,7 @@ function RegisterGrievances() {
     department: "",
     description: "",
     dateRaised: "",
-    location:"",
-    status: "Pending"
+   user_id: 1
   });
 
   function handleChange(e) {
@@ -23,12 +23,27 @@ function RegisterGrievances() {
     }));
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
 
-    console.log(formData);
+     try {
 
-    alert("Grievance Submitted Successfully!");
+    const response = await axios.post(
+      "http://localhost:5000/grievances",
+      formData
+    );
+
+    alert(response.data.message);
+
+    console.log(response.data);
+
+  } catch (err) {
+
+    console.log(err);
+
+    alert("Failed to submit grievance.");
+
+  }
   }
 
   return (
@@ -109,15 +124,6 @@ function RegisterGrievances() {
             required
           />
 
-          <label>Date Raised</label>
-
-          <input
-            type="date"
-            name="dateRaised"
-            value={formData.dateRaised}
-            onChange={handleChange}
-            required
-          />
 
            <label>Location</label>
 
@@ -130,17 +136,7 @@ function RegisterGrievances() {
             required
           />
 
-          <label>Status</label>
-
-          <select
-            name="status"
-            value={formData.status}
-            onChange={handleChange}
-          >
-            <option>Pending</option>
-            <option>In Progress</option>
-            <option>Resolved</option>
-          </select>
+          
 
           <button type="submit">
             Submit Grievance
