@@ -59,9 +59,12 @@
 }
 
 .back-btn{
-    display:block;
+    
     width:220px;
-    margin:35px auto 0;
+    margin-left:5rem;
+  margin-right: 5rem;
+ margin-top: 2rem;
+margin-bottom: 2rem;
     text-align:center;
     text-decoration:none;
     background:#2E7D32;
@@ -73,4 +76,25 @@
 
 .back-btn:hover{
     background:#256428;
+}
+
+
+.update-btn{
+   margin-top: 2rem;
+margin-bottom: 2rem;
+    margin-left:5rem;
+    padding:12px 20px;
+    border:none;
+    border-radius:8px;
+    background:#2E7D32;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+
+}
+
+.update-btn:hover{
+
+    background:#256728;
+
 }

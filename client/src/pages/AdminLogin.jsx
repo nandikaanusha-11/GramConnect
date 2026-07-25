@@ -1,19 +1,52 @@
 import React, { useState } from "react";
 import "./AdminLogin.css";
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
+import axios from "axios";
 function AdminLogin() {
-
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
 
-    const handleSubmit = (e) => {
+     const handleSubmit = async(e) => {
         e.preventDefault();
 
-        console.log("Email:", email);
-        console.log("Password:", password);
+         try{
 
-        // Backend authentication will be connected later
+        const response = await axios.post(
+
+            "http://localhost:5000/admin/login",
+
+            {
+
+                email,
+
+                password
+
+            }
+
+        );
+
+        localStorage.setItem(
+            "token",
+            response.data.token
+        );
+
+        alert(response.data.message);
+
+       navigate("/grievances");
+    }
+
+    catch(err){
+
+        alert(err.response?.data?.message || "Login Failed");
+
+    }
+
+
+        
     };
 
 
@@ -58,6 +91,13 @@ function AdminLogin() {
                     <button type="submit">
                         Login
                     </button>
+
+                    <p className="signup-text">
+    Don't have an admin account?{" "}
+    <Link to="/admin-signup">
+        Sign Up
+    </Link>
+</p>
 
 
                 </form>

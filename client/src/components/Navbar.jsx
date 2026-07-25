@@ -25,7 +25,7 @@ function Navbar() {
 
         <Link
           className="login-btn"
-          to="/admin"
+          to="/admin-login"
         >
           Admin Login
         </Link>

@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "./GrievanceDetails.css";
+import { useNavigate } from "react-router-dom";
 
 function GrievanceDetails() {
-
+    
     const { id } = useParams();
-
+     const navigate = useNavigate();
     const [grievance, setGrievance] = useState(null);
 
     useEffect(() => {
@@ -87,9 +88,22 @@ function GrievanceDetails() {
 
                 </div>
 
-                <Link to="/grievances" className="back-btn">
+               
+                  <Link to="/grievances" className="back-btn">
                     Back to Grievances
                 </Link>
+               
+                
+                   <button
+                   className="update-btn"
+    onClick={() =>
+        navigate(`/update-status/${grievance.grievance_id}`)
+    }
+>
+    Update Status
+</button>
+                
+                
 
             </div>
 
