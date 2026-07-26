@@ -7,18 +7,70 @@ function ViewGrievances() {
    const navigate = useNavigate();
 
    const [grievances, setGrievances] = useState([]);
-   
+   const [loading, setLoading] = useState(true);
+const [error, setError] = useState("");
 
     useEffect(() => {
     async function fetchGrievances(){
-        const response = await axios.get(
+         try{const response = await axios.get(
     "http://localhost:5000/grievances"
 );
 setGrievances(response.data);
+    }catch(err){
+        setError("Unable to load grievances");
+    }finally{
+          setLoading(false);
     }
-
+}
     fetchGrievances();
 }, []);
+
+if (loading) {
+   return (
+    <div className="message-container">
+        <h2>Loading grievances...</h2>
+    </div>
+);
+}
+
+if (error) {
+    return (
+    <div className="message-container">
+
+        <h2>Unable to load grievances</h2>
+
+        <p>
+            Please try again later.
+        </p>
+
+        <button
+            onClick={() => window.location.reload()}
+        >
+            Retry
+        </button>
+
+    </div>
+);
+}
+
+if (grievances.length === 0) {
+    return (
+    <div className="message-container">
+        <h2>No grievances found</h2>
+
+        <p>
+            Register a grievance to get started.
+        </p>
+
+        <button
+            onClick={() => navigate("/register")}
+        >
+            Register Grievance
+        </button>
+
+    </div>
+);
+}
 
     return (
         <div className="grievance-container">

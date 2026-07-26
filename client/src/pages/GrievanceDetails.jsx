@@ -9,7 +9,7 @@ function GrievanceDetails() {
     const { id } = useParams();
      const navigate = useNavigate();
     const [grievance, setGrievance] = useState(null);
-
+   const [error,setError]=useState("");
     useEffect(() => {
 
         async function fetchGrievance() {
@@ -23,7 +23,7 @@ function GrievanceDetails() {
                 setGrievance(response.data);
 
             } catch (err) {
-                console.log(err);
+               setError("Grievance not found.");
             }
 
         }
@@ -32,9 +32,28 @@ function GrievanceDetails() {
 
     }, [id]);
 
-    if (!grievance) {
-        return <h2>Loading...</h2>;
-    }
+   
+    if(error || !grievance){
+
+    return(
+        <div className="message-container">
+
+            <h2>{error}</h2>
+
+            <p>
+                The grievance you are looking for does not exist.
+            </p>
+
+            <button
+                onClick={() => navigate("/grievances")}
+            >
+                Back to Grievances
+            </button>
+
+        </div>
+    );
+
+}
 
     return (
 

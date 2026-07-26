@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./RegisterGrievances.css";
 import axios from "axios";
-
+import { useNavigate } from "react-router-dom";
 function RegisterGrievances() {
-
+    const navigate = useNavigate();
   const [formData, setFormData] = useState({
     complainant: "",
     ward: "",
@@ -27,7 +27,7 @@ function RegisterGrievances() {
     e.preventDefault();
 
      try {
-
+    
     const response = await axios.post(
       "http://localhost:5000/grievances",
       formData
@@ -35,13 +35,14 @@ function RegisterGrievances() {
 
     alert(response.data.message);
 
-    console.log(response.data);
+    navigate("/grievances");
 
   } catch (err) {
 
-    console.log(err);
-
-    alert("Failed to submit grievance.");
+     alert(
+        err.response?.data?.message ||
+        "Submission Failed"
+    );
 
   }
   }

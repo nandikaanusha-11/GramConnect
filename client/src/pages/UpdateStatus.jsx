@@ -9,7 +9,8 @@ function UpdateStatus() {
     const navigate = useNavigate();
 
     const [grievance, setGrievance] = useState({});
-
+    const [loading,setLoading]=useState(true);
+const [error,setError]=useState("");
     useEffect(() => {
 
         async function fetchGrievance() {
@@ -29,6 +30,10 @@ function UpdateStatus() {
                 console.log(err);
 
             }
+            finally{
+
+                setLoading(false);
+            }
 
         }
 
@@ -36,7 +41,21 @@ function UpdateStatus() {
 
     }, [id]);
 
+   if(loading){
 
+    return <h2>Loading...</h2>;
+}
+if(error){
+
+    return(
+        <>
+        <h2>{error}</h2>
+           <button onClick={()=>navigate("/grievances")}>
+            Back
+        </button>
+        </>
+    );
+}
 
     async function handleUpdate(e) {
 
