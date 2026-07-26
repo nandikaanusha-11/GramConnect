@@ -1,5 +1,6 @@
 # GramConnect
 
+
 *A Web-Based Grievance Management System for Village Panchayats*
 
 ---
@@ -618,3 +619,6 @@ Prince Shri Venkateshwara Padmavathy Engineering College
 # License
 
 This project was developed as part of an academic project for educational purposes.
+=======
+A full-stack Grievance Management System for Panchayat administration built with React, Express, Node.js, and MySQL to register, track, search, and manage citizen grievances.
+
