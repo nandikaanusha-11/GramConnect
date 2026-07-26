@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import AdminSignUp from "./pages/AdminSignUp";
 import UpdateStatus from "./pages/UpdateStatus";
+import AccessDenied from "./pages/AccessDenied";
 
 function App() {
   return (
@@ -31,7 +32,7 @@ function App() {
 
       <Route path="/update-status/:id" element={<UpdateStatus />}
 />
-      
+      <Route path="/access-denied" element={<AccessDenied/>}/>
       <Route path="*" element={<NotFound />} />
 
     </Routes>

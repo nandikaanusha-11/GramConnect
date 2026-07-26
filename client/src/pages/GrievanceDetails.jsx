@@ -10,6 +10,7 @@ function GrievanceDetails() {
      const navigate = useNavigate();
     const [grievance, setGrievance] = useState(null);
    const [error,setError]=useState("");
+   const [showLoginMessage, setShowLoginMessage] = useState(false);
     useEffect(() => {
 
         async function fetchGrievance() {
@@ -53,6 +54,19 @@ function GrievanceDetails() {
         </div>
     );
 
+}
+
+
+function handleUpdateClick() {
+const token = localStorage.getItem("token");
+if (token) {
+
+        navigate(`/update-status/${grievance.grievance_id}`);
+
+    }
+   else {
+        navigate("/access-denied");
+        }
 }
 
     return (
@@ -111,18 +125,14 @@ function GrievanceDetails() {
                   <Link to="/grievances" className="back-btn">
                     Back to Grievances
                 </Link>
-               
-                
-                   <button
-                   className="update-btn"
-    onClick={() =>
-        navigate(`/update-status/${grievance.grievance_id}`)
-    }
->
-    Update Status
-</button>
-                
-                
+              
+                 <button
+                className="update-btn"
+                onClick={handleUpdateClick}
+               >
+                Update Status
+               </button>
+              
 
             </div>
 

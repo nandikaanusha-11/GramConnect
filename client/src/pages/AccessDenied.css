@@ -1,0 +1,79 @@
+.access-page{
+
+    min-height:80vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f5f7fa;
+    padding:30px;
+
+}
+
+.access-card{
+
+    width:500px;
+    background:#ffffff;
+    padding:40px;
+    border-radius:16px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+
+}
+
+.access-title{
+
+    color:#d32f2f;
+    font-size:34px;
+    margin-bottom:20px;
+
+}
+
+.access-text{
+
+    color:#555;
+    font-size:17px;
+    line-height:1.6;
+    margin-bottom:30px;
+
+}
+
+.access-login-button{
+
+    width:100%;
+    padding:14px;
+    background:#2E7D32;
+    color:#ffffff;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+    margin-bottom:15px;
+
+}
+
+.access-login-button:hover{
+
+    background:#1b5e20;
+
+}
+
+.access-back-button{
+
+    width:100%;
+    padding:14px;
+    background:#757575;
+    color:#ffffff;
+    border:none;
+    border-radius:10px;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+
+}
+
+.access-back-button:hover{
+
+    background:#424242;
+
+}
