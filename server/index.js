@@ -33,6 +33,31 @@ app.get("/grievances", (req, res) => {
 
 });
 
+app.get("/grievances/search", (req, res) => {
+
+    const { category } = req.query;
+
+    const sql = `
+        SELECT *
+        FROM grievances
+        WHERE category LIKE ?
+        ORDER BY grievance_id DESC
+    `;
+
+    db.query(sql, [`%${category}%`], (err, result) => {
+
+        if (err) {
+            return res.status(500).json(err);
+        }
+
+        res.json(result);
+
+    });
+
+});
+
+    
+
 app.get("/grievances/:id", (req, res) => {
 
     const grievanceId = req.params.id;
@@ -64,6 +89,7 @@ app.post("/grievances", (req, res) => {
 
     const {
         complainant,
+        title,
         ward,
         category,
         department,
@@ -76,14 +102,15 @@ app.post("/grievances", (req, res) => {
 
     const sql = `
     INSERT INTO grievances
-    (complainant, ward, category, department, description, location, status, user_id)
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    (complainant,title, ward, category, department, description, location, status, user_id)
+    VALUES (?, ?,?, ?, ?, ?, ?, ?, ?)
 `;
 
     db.query(
         sql,
         [
         complainant,
+        title,
         ward,
         category,
         department,
@@ -296,7 +323,7 @@ app.put("/grievances/:id", (req, res) => {
 
 });
 
-    
+
 
 
 
