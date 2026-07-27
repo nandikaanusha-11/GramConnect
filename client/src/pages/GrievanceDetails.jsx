@@ -83,6 +83,11 @@ if (token) {
                 </div>
 
                 <div className="detail">
+                    <strong>Title</strong>
+                    <span>{grievance.title}</span>
+                </div>
+
+                <div className="detail">
                     <strong>Department:</strong>
                     <span>{grievance.department}</span>
                 </div>
